@@ -12,7 +12,6 @@ package model;
 public class Account {
     private String username;
     private String password;
-    private String type;
 
     public String getUsername() {
         return username;
@@ -30,12 +29,5 @@ public class Account {
         this.password = password;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
     
 }

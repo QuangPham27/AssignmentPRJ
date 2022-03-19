@@ -17,20 +17,18 @@ import model.Account;
  * @author admin
  */
 public class AccountDBContext extends DBContext{
-    public Account getAccount(String username, String password, String acctype){
+    public Account getAccount(String username, String password){
         try {
             String sql = "SELECT username,password,acctype FROM Account \n" +
-                    "WHERE username = ? AND password = ? AND acctype = ?";
+                    "WHERE username = ? AND password = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setString(2, password);
-            stm.setString(3, acctype);
             ResultSet rs = stm.executeQuery();
             while (rs.next()){
                 Account account = new Account();
                 account.setUsername(rs.getString("username"));
                 account.setPassword(rs.getString("password"));
-                account.setType(rs.getString("acctype"));
                 return account;
             }
         } catch (SQLException ex) {
