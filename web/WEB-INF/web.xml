@@ -77,6 +77,10 @@
         <servlet-name>UpdateLandController2</servlet-name>
         <servlet-class>controller.menu.land.UpdateLandController2</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderInsertController</servlet-name>
+        <servlet-class>controller.menu.OrderInsertController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -144,6 +148,10 @@
     <servlet-mapping>
         <servlet-name>UpdateLandController2</servlet-name>
         <url-pattern>/menu/land/update2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderInsertController</servlet-name>
+        <url-pattern>/menu/orders/insert</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Land;
+import model.Order;
 import model.Project;
 import model.Sector;
 
@@ -204,11 +205,33 @@ public class ListDBContext extends DBContext{
                 l.setSid(rs.getInt("SectorID"));
                 l.setAcreage(rs.getFloat("Acreage"));
                 l.setPid(rs.getInt("ProjectID"));
+                l.setPrice(rs.getFloat("Price"));
                 return l;
             }
         } catch (SQLException ex) {
             Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    public ArrayList<Order> getOrders(){
+        ArrayList<Order> Orders = new ArrayList<>();
+        try {
+            String sql = "select id,LandID,Date,StartPrice,EndPrice,Income from [Orders]";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Order o = new Order();
+                o.setId(rs.getInt("id"));
+                o.setLid(rs.getInt("LandID"));
+                o.setDate(rs.getDate("Date"));
+                o.setStartPrice(rs.getFloat("StartPrice"));
+                o.setEndPrice(rs.getFloat("EndPrice"));
+                o.setIncome(rs.getFloat("Income"));
+                Orders.add(o);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Orders;
     }
 }

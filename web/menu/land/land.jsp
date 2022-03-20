@@ -49,7 +49,8 @@
                 <td>${l.acreage*l.price} mil</td>
                 <td>
                     <a href="/Assignment/menu/land/update?id=${l.id}">Update</a>
-                    <a href="#" onclick="deleteLand(${l.id})"> Delete</a>                    
+                    <a href="#" onclick="deleteLand(${l.id})"> Delete</a>   
+                    <a href="/Assignment/menu/orders/insert?id=${l.id}">Sell</a>
                 </td>
             </tr>
             </c:forEach>

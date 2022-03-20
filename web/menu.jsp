@@ -16,6 +16,6 @@
         <a href="/Assignment/menu/land">Check land</a><br/>
         <a href="/Assignment/menu/sector">Check sector</a><br/>
         <a href="/Assignment/menu/project">Check project</a><br/>
-        <a href="/Assignment/menu/order">Check orders</a><br/>
+        <a href="/Assignment/menu/orders">Check orders</a><br/>
     </body>
 </html>
