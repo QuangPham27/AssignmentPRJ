@@ -13,6 +13,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <script>           
+            function deleteProject(id)
+            {
+                var result = confirm("Are you sure? You will also delete all lands and sectors in this Project!");
+                if(result)
+                {
+                    window.location.href = '/Assignment/menu/project/delete?id=' + id;
+                }
+            }
+        </script>
     <body>
         <table border="1px">
             <tr>
@@ -25,8 +35,8 @@
                 <td>${p.id}</td>
                 <td>${p.name}</td>
                 <td>
-                    <a href="/Assignment/menu/project/update?id=${l.id}">Update</a>
-                    <a href="#" onclick="deletePatient(${l.id})"> Delete</a>                    
+                    <a href="/Assignment/menu/project/update?id=${p.id}">Update</a>
+                    <a href="#" onclick="deleteProject(${p.id})"> Delete</a>                    
                 </td>
             </tr>
             </c:forEach>

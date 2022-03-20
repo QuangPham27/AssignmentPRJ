@@ -27,7 +27,7 @@ public class ListDBContext extends DBContext{
                          "(\n" +
                          "select LandID,LandName,l.SectorID,s.SectorName,s.ProjectID,Acreage,s.Price from Land l join Sector s \n" +
                          "on s.SectorID=l.SectorID\n" +
-                         "group by LandID,LandName,l.SectorID,s.SectorName,s.ProjectID,Acreage,s.Price) a full join Project p\n" +
+                         "group by LandID,LandName,l.SectorID,s.SectorName,s.ProjectID,Acreage,s.Price) a left join Project p\n" +
                          "on a.ProjectID=p.ProjectID\n" +
                          "group by a.LandID,a.LandName,a.SectorID,a.SectorName,p.ProjectID,a.ProjectID,a.Acreage,P.ProjectName,a.Price";
             PreparedStatement stm = connection.prepareStatement(sql);
@@ -91,25 +91,56 @@ public class ListDBContext extends DBContext{
     public ArrayList<Sector> getSectors(Project project){
         ArrayList<Sector> sectors = new ArrayList<>();
         try {
-            String sql = "select s.SectorID,s.SectorName,s.Price,s.ProjectID,p.ProjectName from Sector s join Project p\n" +
-                         "on s.ProjectID=p.ProjectID\n" +
-                         "where s.ProjectID = ?" +
-                         "group by s.SectorID,s.SectorName,s.ProjectID,p.ProjectID,p.ProjectName,s.Price";
+            String sql = "select SectorID from Sector \n" +
+                         "where ProjectID = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, project.getId());
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 Sector s = new Sector();
                 s.setId(rs.getInt("SectorID"));
-                s.setName(rs.getString("SectorName"));
-                s.setPrice(rs.getFloat("Price"));
-                s.setPid(rs.getInt("ProjectID"));
-                s.setPname(rs.getString("ProjectName"));
                 sectors.add(s);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
         return sectors;
+    }
+    
+    public ArrayList<Land> getLands(Sector s){
+        ArrayList<Land> lands = new ArrayList<>();
+        try {
+            String sql = "select LandID from Land\n" +
+                          "where SectorID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1,  s.getId());
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Land l = new Land();
+                s.setId(rs.getInt("LandID"));
+                lands.add(l);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lands;
+    }
+    
+    public Project getProject(int id){
+        try {
+            String sql = "select ProjectID,ProjectName from Project where ProjectID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Project s = new Project();
+                s.setId(rs.getInt("ProjectID"));
+                s.setName(rs.getString("ProjectName"));
+                return s;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

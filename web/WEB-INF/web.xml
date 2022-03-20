@@ -45,6 +45,14 @@
         <servlet-name>InsertProjectController</servlet-name>
         <servlet-class>controller.menu.project.InsertProjectController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteProjectController</servlet-name>
+        <servlet-class>controller.menu.project.DeleteProjectController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProjectController</servlet-name>
+        <servlet-class>controller.menu.project.UpdateProjectController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -80,6 +88,14 @@
     <servlet-mapping>
         <servlet-name>InsertProjectController</servlet-name>
         <url-pattern>/menu/project/insert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProjectController</servlet-name>
+        <url-pattern>/menu/project/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProjectController</servlet-name>
+        <url-pattern>/menu/project/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -54,4 +54,7 @@ public class LandDBContext extends DBContext{
             }
         }
     }
+    public void deleteLand(int id){
+        
+    }
 }

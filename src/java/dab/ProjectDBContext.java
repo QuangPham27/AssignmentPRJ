@@ -44,4 +44,62 @@ public class ProjectDBContext extends DBContext{
             }
         }
     }
+
+    public void deleteProject(Project p) {
+        String sql = "DELETE Project\n" +
+                        " WHERE [ProjectID] = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, p.getId());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if(stm != null)
+                try {
+                    stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(connection != null)
+                try {
+                    connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void updateProject(Project p) {
+        String sql = "UPDATE [Project]\n" +
+                        "   SET [ProjectName] = ?\n" +
+                        " WHERE [ProjectID] = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(2, p.getId());
+            stm.setString(1, p.getName());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if(stm != null)
+                try {
+                    stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(connection != null)
+                try {
+                    connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }
