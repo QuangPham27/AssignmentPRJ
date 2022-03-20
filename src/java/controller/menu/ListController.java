@@ -5,12 +5,15 @@
  */
 package controller.menu;
 
+import dab.ListDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Land;
 
 /**
  *
@@ -31,7 +34,10 @@ public class ListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("list.jsp").forward(request, response);
+        ListDBContext db = new ListDBContext();
+        ArrayList<Land> lands = db.getLands();
+        request.setAttribute("lands", lands);
+        request.getRequestDispatcher("land.jsp").forward(request, response);
     }
 
     /**

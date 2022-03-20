@@ -35,7 +35,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListController</servlet-name>
-        <url-pattern>/menu/list</url-pattern>
+        <url-pattern>/menu/land</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>OrdersController</servlet-name>
