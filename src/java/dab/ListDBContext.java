@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Land;
+import model.Project;
+import model.Sector;
 
 /**
  *
@@ -46,5 +48,68 @@ public class ListDBContext extends DBContext{
             Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lands;
+    }
+    public ArrayList<Sector> getSectors(){
+        ArrayList<Sector> sectors = new ArrayList<>();
+        try {
+            String sql = "select s.SectorID,s.SectorName,s.Price,s.ProjectID,p.ProjectName from Sector s join Project p\n" +
+                         "on s.ProjectID=p.ProjectID\n" +
+                         "group by s.SectorID,s.SectorName,s.ProjectID,p.ProjectID,p.ProjectName,s.Price";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Sector s = new Sector();
+                s.setId(rs.getInt("SectorID"));
+                s.setName(rs.getString("SectorName"));
+                s.setPrice(rs.getFloat("Price"));
+                s.setPid(rs.getInt("ProjectID"));
+                s.setPname(rs.getString("ProjectName"));
+                sectors.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sectors;
+    }
+    public ArrayList<Project> getProjects(){
+        ArrayList<Project> projects = new ArrayList<>();
+        try {
+            String sql = "select ProjectID,ProjectName from Project";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Project s = new Project();
+                s.setId(rs.getInt("ProjectID"));
+                s.setName(rs.getString("ProjectName"));
+                projects.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return projects;
+    }
+    public ArrayList<Sector> getSectors(Project project){
+        ArrayList<Sector> sectors = new ArrayList<>();
+        try {
+            String sql = "select s.SectorID,s.SectorName,s.Price,s.ProjectID,p.ProjectName from Sector s join Project p\n" +
+                         "on s.ProjectID=p.ProjectID\n" +
+                         "where s.ProjectID = ?" +
+                         "group by s.SectorID,s.SectorName,s.ProjectID,p.ProjectID,p.ProjectName,s.Price";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, project.getId());
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Sector s = new Sector();
+                s.setId(rs.getInt("SectorID"));
+                s.setName(rs.getString("SectorName"));
+                s.setPrice(rs.getFloat("Price"));
+                s.setPid(rs.getInt("ProjectID"));
+                s.setPname(rs.getString("ProjectName"));
+                sectors.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sectors;
     }
 }

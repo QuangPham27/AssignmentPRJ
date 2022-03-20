@@ -15,6 +15,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <script>           
+            function deletePatient(id)
+            {
+                var result = confirm("are you sure?");
+                if(result)
+                {
+                    window.location.href = 'delete?id=' + id;
+                }
+            }
+        </script>
     <body>
         <table border="1px">
             <tr>
@@ -37,12 +47,12 @@
                 <td>${l.price} mil/m2</td>
                 <td>${l.acreage*l.price} mil</td>
                 <td>
-                    <a href="land/update?id=${l.id}">Update</a>
+                    <a href="/Assignment/menu/land/update?id=${l.id}">Update</a>
                     <a href="#" onclick="deletePatient(${l.id})"> Delete</a>                    
                 </td>
             </tr>
             </c:forEach>
         </table>
-        <a href="land/insert"><button>Insert</button></a>
+        <a href="/Assignment/menu/land/insert"><button>Insert</button></a>
     </body>
 </html>

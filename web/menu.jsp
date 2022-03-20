@@ -13,9 +13,9 @@
     </head>
     <body>
         <h1>Welcome to Real Estate Management System</h1>
-        <a href="menu/land">Check land</a><br/>
-        <a href="menu/sector">Check sector</a><br/>
-        <a href="menu/project">Check project</a><br/>
-        <a href="menu/order">Check orders</a><br/>
+        <a href="/Assignment/menu/land">Check land</a><br/>
+        <a href="/Assignment/menu/sector">Check sector</a><br/>
+        <a href="/Assignment/menu/project">Check project</a><br/>
+        <a href="/Assignment/menu/order">Check orders</a><br/>
     </body>
 </html>

@@ -13,7 +13,16 @@ public class Sector {
     private int id;
     private String name;
     private int pid;
+    private String pname;
     private float price;
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
 
     public int getId() {
         return id;
