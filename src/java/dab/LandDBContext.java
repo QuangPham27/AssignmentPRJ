@@ -72,4 +72,37 @@ public class LandDBContext extends DBContext{
             }
         }
     }
+    public void updateLand(Land l){
+        String sql = "UPDATE [Land]\n" +
+                        "   SET [LandName] = ?\n" +
+                        "      ,[SectorID] = ?\n" +
+                        "      ,[Acreage] = ?\n" +
+                        " WHERE [LandID] = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(4, l.getId());
+            stm.setString(1, l.getName());
+            stm.setInt(2, l.getSid());
+            stm.setFloat(3, l.getAcreage());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(LandDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if(stm != null)
+                try {
+                    stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LandDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(connection != null)
+                try {
+                    connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LandDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }

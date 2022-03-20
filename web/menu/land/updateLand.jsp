@@ -14,7 +14,21 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="/Assignment/menu/sector"><button>Go back</button></a>
-        <h1>Hello World!</h1>
+        <a href="/Assignment/menu/land"><button>Go back</button></a>
+        <form action="update" method="POST">
+            LandName:<input type="text" name="name" value="${requestScope.name}"/><br/>
+            Acreage:<input type="text" name="acreage" value="${requestScope.acreage}"/><br/>
+            ProjectName:<select name="pid" >
+                <c:forEach items="${requestScope.projects}" var="p">
+                
+                <option 
+                    ${(p.getId() eq requestScope.pid)?"selected=\"selected\"":""}
+                    value="${p.id}">${p.name}</option>
+                </c:forEach>
+            </select>
+            <br/>
+            <input type="submit" value="Next"/>
+            <input type="hidden" name="id" value="${requestScope.id}"/>
+            </form>
     </body>
 </html>

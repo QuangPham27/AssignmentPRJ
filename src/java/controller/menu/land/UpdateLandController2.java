@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.menu.sector;
+package controller.menu.land;
 
 import dab.LandDBContext;
 import dab.ListDBContext;
-import dab.ProjectDBContext;
-import dab.SectorDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,14 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Land;
-import model.Project;
-import model.Sector;
 
 /**
  *
  * @author admin
  */
-public class DeleteSectorController extends HttpServlet {
+public class UpdateLandController2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,19 +33,19 @@ public class DeleteSectorController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Sector s = new Sector();
-        s.setId(id);
+        String name = request.getParameter("name");
+        float acreage = Float.parseFloat(request.getParameter("acreage"));
+        int sid = Integer.parseInt(request.getParameter("sid"));
+        int pid = Integer.parseInt(request.getParameter("pid"));
         ListDBContext db = new ListDBContext();
-        SectorDBContext db2 = new SectorDBContext();
-        LandDBContext db3 = new LandDBContext();
-        Sector sector = db.getSector(id);
-        ArrayList<Land> lands = db.getLands(sector);
-        for (int i=0;i<lands.size();i++){
-            db3.deleteLand(lands.get(lands.size()-1));
-        }
-        db2.deleteSector(s);       
-        response.sendRedirect("/Assignment/menu/sector");
+        Land l = new Land();
+        l.setSid(sid);
+        l.setPid(pid);
+        l.setAcreage(acreage);
+        l.setName(name);
+        LandDBContext db1 = new LandDBContext();
+        db1.updateLand(l);
+        response.sendRedirect("/Assignment/menu/land");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

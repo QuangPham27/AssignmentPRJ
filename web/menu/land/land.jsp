@@ -16,7 +16,7 @@
         <title>JSP Page</title>
     </head>
     <script>           
-            function deletePatient(id)
+            function deleteLand(id)
             {
                 var result = confirm("Are you sure?");
                 if(result)
