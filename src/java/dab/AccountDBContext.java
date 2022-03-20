@@ -19,7 +19,7 @@ import model.Account;
 public class AccountDBContext extends DBContext{
     public Account getAccount(String username, String password){
         try {
-            String sql = "SELECT username,password,acctype FROM Account \n" +
+            String sql = "SELECT username,password FROM Account \n" +
                     "WHERE username = ? AND password = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
