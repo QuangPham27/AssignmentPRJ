@@ -19,7 +19,7 @@ import model.Land;
  *
  * @author admin
  */
-public class ListController extends HttpServlet {
+public class LandController extends HttpServlet {
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -37,7 +37,7 @@ public class ListController extends HttpServlet {
         ListDBContext db = new ListDBContext();
         ArrayList<Land> lands = db.getLands();
         request.setAttribute("lands", lands);
-        request.getRequestDispatcher("land.jsp").forward(request, response);
+        request.getRequestDispatcher("land/land.jsp").forward(request, response);
     }
 
     /**
