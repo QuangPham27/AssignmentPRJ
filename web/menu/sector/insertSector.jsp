@@ -1,6 +1,6 @@
 <%-- 
-    Document   : insertLand
-    Created on : Mar 20, 2022, 1:00:06 PM
+    Document   : insertSector
+    Created on : Mar 20, 2022, 4:37:23 PM
     Author     : admin
 --%>
 
@@ -12,13 +12,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
         <a href="/Assignment/menu/sector"><button>Go back</button></a>
         <form action="insert" method="POST">
-            LandName:<input type="text" name="name"/><br/>
-            Acreage:<input type="text" name="acreage"/><br/>
+            SectorName:<input type="text" name="name"/><br/>
             Price:<input type="text" name="price"/><br/>
             ProjectName: <select name="pid">
                 <c:forEach items="${requestScope.projects}" var="p">

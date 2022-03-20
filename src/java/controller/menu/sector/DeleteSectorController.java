@@ -3,20 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.menu.land;
+package controller.menu.sector;
 
+import dab.LandDBContext;
+import dab.ListDBContext;
+import dab.ProjectDBContext;
+import dab.SectorDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Land;
+import model.Project;
+import model.Sector;
 
 /**
  *
  * @author admin
  */
-public class UpdateController extends HttpServlet {
+public class DeleteSectorController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +37,19 @@ public class UpdateController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UpdateController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UpdateController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Sector s = new Sector();
+        s.setId(id);
+        ListDBContext db = new ListDBContext();
+        SectorDBContext db2 = new SectorDBContext();
+        LandDBContext db3 = new LandDBContext();
+        Sector sector = db.getSector(id);
+        ArrayList<Land> lands = db.getLands(sector);
+        for (int i=0;i<lands.size();i++){
+            db3.deleteLand(lands.get(i));
         }
+        db2.deleteSector(s);       
+        response.sendRedirect("/Assignment/menu/sector");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

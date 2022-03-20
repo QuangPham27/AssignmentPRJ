@@ -26,16 +26,16 @@
         <servlet-class>controller.menu.OrdersController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>InsertController</servlet-name>
-        <servlet-class>controller.menu.land.InsertController</servlet-class>
+        <servlet-name>InsertLandController</servlet-name>
+        <servlet-class>controller.menu.land.InsertLandController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteController</servlet-name>
-        <servlet-class>controller.menu.land.DeleteController</servlet-class>
+        <servlet-name>DeleteLandController</servlet-name>
+        <servlet-class>controller.menu.land.DeleteLandController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateController</servlet-name>
-        <servlet-class>controller.menu.land.UpdateController</servlet-class>
+        <servlet-name>UpdateLandController</servlet-name>
+        <servlet-class>controller.menu.land.UpdateLandController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProjectController</servlet-name>
@@ -52,6 +52,22 @@
     <servlet>
         <servlet-name>UpdateProjectController</servlet-name>
         <servlet-class>controller.menu.project.UpdateProjectController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteSectorController</servlet-name>
+        <servlet-class>controller.menu.sector.DeleteSectorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SectorController</servlet-name>
+        <servlet-class>controller.menu.SectorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertSectorController</servlet-name>
+        <servlet-class>controller.menu.sector.InsertSectorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSectorController</servlet-name>
+        <servlet-class>controller.menu.sector.UpdateSectorController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
@@ -70,15 +86,15 @@
         <url-pattern>/menu/orders</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>InsertController</servlet-name>
+        <servlet-name>InsertLandController</servlet-name>
         <url-pattern>/menu/land/insert</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteController</servlet-name>
+        <servlet-name>DeleteLandController</servlet-name>
         <url-pattern>/menu/land/delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UpdateController</servlet-name>
+        <servlet-name>UpdateLandController</servlet-name>
         <url-pattern>/menu/land/update</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -96,6 +112,22 @@
     <servlet-mapping>
         <servlet-name>UpdateProjectController</servlet-name>
         <url-pattern>/menu/project/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSectorController</servlet-name>
+        <url-pattern>/menu/sector/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SectorController</servlet-name>
+        <url-pattern>/menu/sector</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertSectorController</servlet-name>
+        <url-pattern>/menu/sector/insert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSectorController</servlet-name>
+        <url-pattern>/menu/sector/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

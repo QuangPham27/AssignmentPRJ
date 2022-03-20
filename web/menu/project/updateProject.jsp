@@ -14,6 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <a href="/Assignment/menu/project"><button>Go back</button></a>
         <form action="update" method="POST">
             ProjectName:<input type="text" name="name" value="${requestScope.name}"/><br/>
             <input type="hidden" name="id" value="${requestScope.id}"/>

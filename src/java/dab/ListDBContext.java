@@ -143,4 +143,23 @@ public class ListDBContext extends DBContext{
         }
         return null;
     }
+    public Sector getSector(int id){
+        try {
+            String sql = "select SectorID,SectorName,ProjectID,Price from Sector where SectorID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Sector s = new Sector();
+                s.setId(rs.getInt("SectorID"));
+                s.setName(rs.getString("SectorName"));
+                s.setPid(rs.getInt("ProjectID"));
+                s.setPrice(rs.getFloat("Price"));
+                return s;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

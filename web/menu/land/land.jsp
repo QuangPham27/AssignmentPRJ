@@ -26,6 +26,7 @@
             }
         </script>
     <body>
+        <a href="/Assignment/menu"><button>Go back</button></a>
         <table border="1px">
             <tr>
                 <td>Id</td>

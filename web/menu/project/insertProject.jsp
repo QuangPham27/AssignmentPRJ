@@ -14,9 +14,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <a href="/Assignment/menu/project"><button>Go back</button></a>
         <form action="insert" method="POST">
             ProjectName:<input type="text" name="name"/><br/>
-            <input type="submit" value="Save"/>
+            <input type="submit" value="Insert"/>
             </form>
     </body>
 </html>

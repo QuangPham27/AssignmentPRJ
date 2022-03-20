@@ -54,7 +54,31 @@ public class LandDBContext extends DBContext{
             }
         }
     }
-    public void deleteLand(int id){
-        
+    public void deleteLand(Land l){
+        String sql = "DELETE Land\n" +
+                        " WHERE [LandID] = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, l.getId());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(LandDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if(stm != null)
+                try {
+                    stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LandDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(connection != null)
+                try {
+                    connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LandDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

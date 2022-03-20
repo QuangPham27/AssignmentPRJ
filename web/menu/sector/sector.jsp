@@ -1,6 +1,6 @@
 <%-- 
-    Document   : project
-    Created on : Mar 20, 2022, 2:33:49 PM
+    Document   : sector
+    Created on : Mar 20, 2022, 4:37:13 PM
     Author     : admin
 --%>
 
@@ -14,12 +14,12 @@
         <title>JSP Page</title>
     </head>
     <script>           
-            function deleteProject(id)
+            function deleteSector(id)
             {
-                var result = confirm("Are you sure? You will also delete all lands and sectors in this Project!");
+                var result = confirm("Are you sure? You will also delete all lands in this Sector!");
                 if(result)
                 {
-                    window.location.href = '/Assignment/menu/project/delete?id=' + id;
+                    window.location.href = '/Assignment/menu/sector/delete?id=' + id;
                 }
             }
         </script>
@@ -28,20 +28,23 @@
         <table border="1px">
             <tr>
                 <td>Id</td>
+                <td>SectorName</td>
                 <td>ProjectName</td>
-                <td></td>
+                <td>Price</td>
             </tr>
-            <c:forEach items="${requestScope.projects}" var="p">
+            <c:forEach items="${requestScope.sectors}" var="s">
             <tr>
-                <td>${p.id}</td>
-                <td>${p.name}</td>
+                <td>${s.id}</td>
+                <td>${s.name}</td>
+                <td>${s.pname}</td>
+                <td>${s.price}</td>
                 <td>
-                    <a href="/Assignment/menu/project/update?id=${p.id}">Update</a>
-                    <a href="#" onclick="deleteProject(${p.id})"> Delete</a>                    
+                    <a href="/Assignment/menu/sector/update?id=${s.id}">Update</a>
+                    <a href="#" onclick="deleteSector(${s.id})"> Delete</a>                    
                 </td>
             </tr>
             </c:forEach>
         </table>
-        <a href="/Assignment/menu/project/insert"><button>Insert</button></a>
+        <a href="/Assignment/menu/sector/insert"><button>Insert</button></a>
     </body>
 </html>
