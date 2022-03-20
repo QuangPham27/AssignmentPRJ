@@ -71,6 +71,7 @@ public class UpdateLandController extends HttpServlet {
         Land l = db.getLand(id);
         Project p = db.getProject(pid);
         String pname = p.getName();
+        request.setAttribute("id", id);
         request.setAttribute("name", name);
         request.setAttribute("pname", pname);
         request.setAttribute("acreage", acreage);

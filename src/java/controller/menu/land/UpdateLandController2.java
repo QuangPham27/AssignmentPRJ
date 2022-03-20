@@ -37,8 +37,10 @@ public class UpdateLandController2 extends HttpServlet {
         float acreage = Float.parseFloat(request.getParameter("acreage"));
         int sid = Integer.parseInt(request.getParameter("sid"));
         int pid = Integer.parseInt(request.getParameter("pid"));
+        int id = Integer.parseInt(request.getParameter("id"));
         ListDBContext db = new ListDBContext();
         Land l = new Land();
+        l.setId(id);
         l.setSid(sid);
         l.setPid(pid);
         l.setAcreage(acreage);

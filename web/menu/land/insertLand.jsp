@@ -12,10 +12,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link href="../css/input.css" rel="stylesheet">
     </head>
     <body>
-        <a href="/Assignment/menu/sector"><button>Go back</button></a>
+        <a href="/Assignment/menu/land"><button>Go back</button></a>
         <form action="insert" method="POST">
             LandName:<input type="text" name="name"/><br/>
             Acreage:<input type="text" name="acreage"/><br/>

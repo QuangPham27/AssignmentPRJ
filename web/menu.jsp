@@ -10,12 +10,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="css/menu.css" rel="stylesheet">
     </head>
     <body>
         <h1>Welcome to Real Estate Management System</h1>
+        <h2>
         <a href="/Assignment/menu/land">Check land</a><br/>
         <a href="/Assignment/menu/sector">Check sector</a><br/>
         <a href="/Assignment/menu/project">Check project</a><br/>
         <a href="/Assignment/menu/orders">Check orders</a><br/>
+        </h2>
     </body>
 </html>

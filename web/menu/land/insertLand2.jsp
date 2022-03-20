@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="../css/input.css" rel="stylesheet">
     </head>
     <body>
         <a href="/Assignment/menu/sector/insert"><button>Go back</button></a>
@@ -33,7 +34,7 @@
                 </c:forEach>
                 </select>
             <br/>
-            <input type="submit" value="Next"/>
+            <input type="submit" value="Insert"/>
             </form>
     </body>
 </html>

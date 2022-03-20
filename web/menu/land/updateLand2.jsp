@@ -12,10 +12,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="../css/input.css" rel="stylesheet">
     </head>
     <body>
-        <a href="/Assignment/menu/sector/update"><button>Go back</button></a>
-        <form action="insert2" method="POST">
+        <a href="/Assignment/menu/land"><button>Go back</button></a>
+        <form action="update2" method="POST">
             LandName:${requestScope.name}<input type="hidden" name="name" value="${requestScope.name}"/><br/>
             Acreage:${requestScope.acreage}<input type="hidden" name="acreage" value="${requestScope.acreage}"/><br/>
             ProjectName:${requestScope.pname} <select name="pid" hidden='hidden'>
@@ -36,6 +37,7 @@
                 </select>
             <br/>
             <input type="submit" value="Update"/>
+            <input type="hidden" name="id" value="${requestScope.id}"/>
             </form>
     </body>
 </html>
