@@ -17,21 +17,12 @@ import model.Land;
  */
 public class LandDBContext extends DBContext{
     public void insertLand(Land l) {
-        String sql = "INSERT INTO [Land]\n" +
-                    "           ([LandID]\n" +
-                    "           ,[LandName]\n" +
-                    "           ,[SectorID]\n" +
-                    "           ,[Acreage]\n" +
-                    "     VALUES\n" +
-                    "           (?\n" +
-                    "           ,?\n" +
-                    "           ,?\n" +
-                    "           ,?)";
+        String sql = "insert into Land([LandID],[LandName],[SectorID],[Acreage]) values (?,?,?,?)";
         PreparedStatement stm = null;
         try {
             stm = connection.prepareStatement(sql);
             stm.setInt(1, l.getId());
-            stm.setString(2, l.getSname());
+            stm.setString(2, l.getName());
             stm.setInt(3, l.getSid());
             stm.setFloat(4, l.getAcreage());
             stm.executeUpdate();

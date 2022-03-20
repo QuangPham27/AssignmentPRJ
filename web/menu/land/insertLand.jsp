@@ -19,7 +19,6 @@
         <form action="insert" method="POST">
             LandName:<input type="text" name="name"/><br/>
             Acreage:<input type="text" name="acreage"/><br/>
-            Price:<input type="text" name="price"/><br/>
             ProjectName: <select name="pid">
                 <c:forEach items="${requestScope.projects}" var="p">
                 

@@ -162,4 +162,24 @@ public class ListDBContext extends DBContext{
         }
         return null;
     }
+    
+    public ArrayList<Sector> getSectors2(Project project){
+        ArrayList<Sector> sectors = new ArrayList<>();
+        try {
+            String sql = "select SectorID,SectorName from Sector \n" +
+                         "where ProjectID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, project.getId());
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Sector s = new Sector();
+                s.setId(rs.getInt("SectorID"));
+                s.setName(rs.getString("SectorName"));
+                sectors.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sectors;
+    }
 }

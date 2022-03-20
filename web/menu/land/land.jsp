@@ -18,10 +18,10 @@
     <script>           
             function deletePatient(id)
             {
-                var result = confirm("are you sure?");
+                var result = confirm("Are you sure?");
                 if(result)
                 {
-                    window.location.href = 'delete?id=' + id;
+                    window.location.href = '/Assignment/menu/land/delete?id=' + id;
                 }
             }
         </script>
@@ -49,7 +49,7 @@
                 <td>${l.acreage*l.price} mil</td>
                 <td>
                     <a href="/Assignment/menu/land/update?id=${l.id}">Update</a>
-                    <a href="#" onclick="deletePatient(${l.id})"> Delete</a>                    
+                    <a href="#" onclick="deleteLand(${l.id})"> Delete</a>                    
                 </td>
             </tr>
             </c:forEach>

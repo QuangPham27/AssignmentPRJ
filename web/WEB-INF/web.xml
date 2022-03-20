@@ -69,6 +69,10 @@
         <servlet-name>UpdateSectorController</servlet-name>
         <servlet-class>controller.menu.sector.UpdateSectorController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertLandController2</servlet-name>
+        <servlet-class>controller.menu.land.InsertLandController2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -128,6 +132,10 @@
     <servlet-mapping>
         <servlet-name>UpdateSectorController</servlet-name>
         <url-pattern>/menu/sector/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertLandController2</servlet-name>
+        <url-pattern>/menu/land/insert2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -17,7 +17,7 @@
         <a href="/Assignment/menu/sector"><button>Go back</button></a>
         <form action="update" method="POST">
             SectorName:<input type="text" name="name" value="${requestScope.name}"/><br/>
-            Price:<input type="text" name="name" value="${requestScope.price}"/><br/>
+            Price:<input type="text" name="price" value="${requestScope.price}"/><br/>
             ProjectName: <select name="pid">
                 <c:forEach items="${requestScope.projects}" var="p">
                 

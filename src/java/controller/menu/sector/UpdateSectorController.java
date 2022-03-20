@@ -7,6 +7,7 @@ package controller.menu.sector;
 
 import dab.ListDBContext;
 import dab.ProjectDBContext;
+import dab.SectorDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -61,7 +62,18 @@ public class UpdateSectorController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        int pid = Integer.parseInt(request.getParameter("pid"));
+        float price = Float.parseFloat(request.getParameter("price"));
+        Sector s = new Sector();
+        s.setId(id);
+        s.setName(name);
+        s.setPid(pid);
+        s.setPrice(price);
+        SectorDBContext db = new SectorDBContext();
+        db.updateSector(s);
+        response.sendRedirect("/Assignment/menu/sector");
     }
 
     /**

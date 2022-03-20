@@ -5,20 +5,50 @@
  */
 package controller.menu.land;
 
+import dab.LandDBContext;
+import dab.ListDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Land;
+import model.Project;
+import model.Sector;
 
 /**
  *
  * @author admin
  */
-public class UpdateLandController extends HttpServlet {
+public class InsertLandController2 extends HttpServlet {
 
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String name = request.getParameter("name");
+        float acreage = Float.parseFloat(request.getParameter("acreage"));
+        int sid = Integer.parseInt(request.getParameter("sid"));
+        ListDBContext db = new ListDBContext();
+        Land l = new Land();
+        l.setSid(sid);
+        l.setAcreage(acreage);
+        l.setName(name);
+        ArrayList<Land> lands = db.getLands();
+        l.setId(lands.size()+1);
+        LandDBContext db1 = new LandDBContext();
+        db1.insertLand(l);
+        response.sendRedirect("/Assignment/menu/land");
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -32,7 +62,7 @@ public class UpdateLandController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -46,7 +76,7 @@ public class UpdateLandController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**

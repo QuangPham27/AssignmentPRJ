@@ -47,7 +47,37 @@ public class SectorDBContext extends DBContext{
     }
     
     public void updateSector(Sector s){
-        
+        String sql = "UPDATE [Sector]\n" +
+                        "   SET [SectorName] = ?\n" +
+                        "      ,[ProjectID] = ?\n" +
+                        "      ,[Price] = ?\n" +
+                        " WHERE [SectorID] = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(2, s.getPid());
+            stm.setString(1, s.getName());
+            stm.setFloat(3, s.getPrice());
+            stm.setInt(4, s.getId());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SectorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if(stm != null)
+                try {
+                    stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SectorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(connection != null)
+                try {
+                    connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SectorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
     public void deleteSector(Sector s){

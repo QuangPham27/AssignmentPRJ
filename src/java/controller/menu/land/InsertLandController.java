@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Land;
 import model.Project;
 import model.Sector;
 
@@ -56,7 +57,21 @@ public class InsertLandController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("/Assignment/menu/land");
+        String name = request.getParameter("name");
+        float acreage = Float.parseFloat(request.getParameter("acreage"));
+        int pid = Integer.parseInt(request.getParameter("pid"));
+        ListDBContext db = new ListDBContext();
+        Project p = db.getProject(pid);
+        String pname = p.getName();
+        request.setAttribute("name", name);
+        request.setAttribute("acreage", acreage);
+        request.setAttribute("pid", pid);
+        request.setAttribute("pname", pname);
+        ArrayList<Sector> sectors = db.getSectors2(p);
+        request.setAttribute("sectors", sectors);
+        ArrayList<Project> projects = db.getProjects();
+        request.setAttribute("projects", projects);
+        request.getRequestDispatcher("/menu/land/insertLand2.jsp").forward(request, response);
     }
 
     /**
