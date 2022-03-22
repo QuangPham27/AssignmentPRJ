@@ -32,8 +32,17 @@ public class SectorController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int pagesize = 5;
+        String page = request.getParameter("page");
+        if(page ==null || page.trim().length() ==0)
+            page= "1";
+        int pageindex =Integer.parseInt(page); 
         ListDBContext db = new ListDBContext();
-        ArrayList<Sector> sectors = db.getSectors();
+        ArrayList<Sector> sectors = db.getSectors(pageindex,pagesize);
+        int count = db.countSector();
+        int totalpage = (count%pagesize==0)?(count/pagesize):(count / pagesize)+1;
+        request.setAttribute("totalpage", totalpage);
+        request.setAttribute("pageindex", pageindex);  
         request.setAttribute("sectors", sectors);
         request.getRequestDispatcher("sector/sector.jsp").forward(request, response);
     }

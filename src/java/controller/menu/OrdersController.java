@@ -33,8 +33,17 @@ public class OrdersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int pagesize = 5;
+        String page = request.getParameter("page");
+        if(page ==null || page.trim().length() ==0)
+            page= "1";
+        int pageindex =Integer.parseInt(page); 
         ListDBContext db = new ListDBContext();
-        ArrayList<Order> orders = db.getOrders();
+        ArrayList<Order> orders = db.getOrders(pageindex,pagesize);
+        int count = db.countOrders();
+        int totalpage = (count%pagesize==0)?(count/pagesize):(count / pagesize)+1;
+        request.setAttribute("totalpage", totalpage);
+        request.setAttribute("pageindex", pageindex); 
         request.setAttribute("orders", orders);
         request.getRequestDispatcher("order/order.jsp").forward(request, response);
     }

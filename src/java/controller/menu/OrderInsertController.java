@@ -61,8 +61,7 @@ public class OrderInsertController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ListDBContext db = new ListDBContext();
-        ArrayList<Order> orders = db.getOrders();
-        int id = orders.size()+1;
+        int id = db.countOrders()+1;
         int lid = Integer.parseInt(request.getParameter("lid"));
         Land l = new Land();
         l.setId(lid);

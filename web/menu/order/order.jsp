@@ -14,6 +14,8 @@
         <title>JSP Page</title>
         <link href="css/tablepage.css" rel="stylesheet">
     </head>
+    <script src="js/pagger.js" type="text/javascript"></script>
+    <link href="css/pagger.css" rel="stylesheet" type="text/css"/>
     <body>
         <a href="/Assignment/menu"><button>Go back</button></a>
         <table border="1px">
@@ -36,5 +38,9 @@
             </tr>
             </c:forEach>
         </table>
+        <div id="paggerbot" class="pagger"> </div>
+        <script> 
+            pagger("paggerbot",${requestScope.pageindex},${requestScope.totalpage},2,"orders");
+        </script>
     </body>
 </html>

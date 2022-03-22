@@ -14,6 +14,8 @@
         <title>JSP Page</title>
         <link href="css/tablepage.css" rel="stylesheet">
     </head>
+    <script src="js/pagger.js" type="text/javascript"></script>
+    <link href="css/pagger.css" rel="stylesheet" type="text/css"/>
     <script>           
             function deleteSector(id)
             {
@@ -46,6 +48,10 @@
             </tr>
             </c:forEach>
         </table>
+        <div id="paggerbot" class="pagger"> </div>
+        <script> 
+            pagger("paggerbot",${requestScope.pageindex},${requestScope.totalpage},2,"sector");
+        </script>
         <a href="/Assignment/menu/sector/insert"><button>Insert</button></a>
     </body>
 </html>
