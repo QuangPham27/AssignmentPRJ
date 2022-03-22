@@ -56,21 +56,7 @@ public class LandDBContext extends DBContext{
         } catch (SQLException ex) {
             Logger.getLogger(LandDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
-        finally
-        {
-            if(stm != null)
-                try {
-                    stm.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(LandDBContext.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if(connection != null)
-                try {
-                    connection.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(LandDBContext.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        
     }
     public void updateLand(Land l){
         String sql = "UPDATE [Land]\n" +

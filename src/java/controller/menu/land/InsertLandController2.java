@@ -43,8 +43,7 @@ public class InsertLandController2 extends HttpServlet {
         l.setSid(sid);
         l.setAcreage(acreage);
         l.setName(name);
-        ArrayList<Land> lands = db.getLands();
-        l.setId(lands.size()+1);
+        l.setId(db.getLandID()+1);
         LandDBContext db1 = new LandDBContext();
         db1.insertLand(l);
         response.sendRedirect("/Assignment/menu/land");

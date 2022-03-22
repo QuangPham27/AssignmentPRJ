@@ -46,7 +46,7 @@ public class DeleteSectorController extends HttpServlet {
         Sector sector = db.getSector(id);
         ArrayList<Land> lands = db.getLands(sector);
         for (int i=0;i<lands.size();i++){
-            db3.deleteLand(lands.get(lands.size()-1));
+            db3.deleteLand(lands.get(i));
         }
         db2.deleteSector(s);       
         response.sendRedirect("/Assignment/menu/sector");

@@ -34,9 +34,12 @@ public class DeleteLandController extends HttpServlet {
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Land l = new Land();
+        Land temp = new Land();
         l.setId(id);
+        temp.setId(id+1);
         LandDBContext db = new LandDBContext();
         db.deleteLand(l);
+        db.deleteLand(temp);
         response.sendRedirect("/Assignment/menu/land");
     }
 

@@ -91,20 +91,5 @@ public class SectorDBContext extends DBContext{
         } catch (SQLException ex) {
             Logger.getLogger(SectorDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
-        finally
-        {
-            if(stm != null)
-                try {
-                    stm.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(SectorDBContext.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if(connection != null)
-                try {
-                    connection.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(SectorDBContext.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }
 }

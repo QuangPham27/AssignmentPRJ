@@ -50,7 +50,7 @@ public class DeleteProjectController extends HttpServlet {
             s.setId(sectors.get(sectors.size()-1).getId());
             ArrayList<Land> lands = db.getLands(s);
             for (int j=0;j<lands.size();j++){
-                db3.deleteLand(lands.get(lands.size()-1));
+                db3.deleteLand(lands.get(j));
             }
             db2.deleteSector(s);
         }       

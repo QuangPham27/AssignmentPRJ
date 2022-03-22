@@ -234,4 +234,47 @@ public class ListDBContext extends DBContext{
         }
         return Orders;
     }
+    
+    public int getLandID(){
+        try {
+            String sql = "select max(LandID) as ID from Land";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                int x = rs.getInt("ID");
+                return x;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }   
+    public int getSectorID(){
+        try {
+            String sql = "select max(SectorID) as ID from Sector";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                int x = rs.getInt("ID");
+                return x;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    public int getProjectID(){
+        try {
+            String sql = "select max(ProjectID) as ID from Project";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                int x = rs.getInt("ID");
+                return x;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ListDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }
